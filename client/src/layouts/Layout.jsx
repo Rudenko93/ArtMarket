@@ -7,7 +7,6 @@ export function Layout() {
     <>
       <Navbar />
       <Outlet />
-      <Footer />
     </>
   )
 }

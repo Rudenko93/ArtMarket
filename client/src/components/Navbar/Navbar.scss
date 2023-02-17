@@ -1,0 +1,88 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #013914;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: 0.7s all ease;
+  a {
+    color: white;
+  }
+
+  &.active {
+    background-color: white;
+    color: black;
+    button {
+      background-color: white !important;
+      color: #1bb16b !important;
+      border: 1px solid #1bb26b !important;
+      transition: all 0.7s ease !important;
+      background-color: transparent !important;
+
+      &:hover {
+        background: lighten($color: #d2eae1, $amount: 5%) !important;
+      }
+      &:active {
+        background: darken($color: #cbebdb, $amount: 5%) !important;
+      }
+    }
+    a {
+      color: black;
+    }
+  }
+
+  .container {
+    width: 1400px;
+    .top {
+      width: 1400px;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+
+      .left {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-weight: bold;
+        button {
+          font-weight: bold;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: 1px solid white;
+          cursor: pointer;
+          transition: all 0.1s ease-in-out;
+          background-color: transparent;
+
+          &:hover {
+            background: lighten($color: #1aac68, $amount: 5%);
+          }
+          &:active {
+            background: darken($color: #1e8555, $amount: 5%);
+          }
+        }
+      }
+    }
+  }
+  hr {
+    width: 100%;
+    border-top: 0.5px solid #ebe9e9;
+    border-bottom: 0.5px solid #ebe9e9;
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 1400px;
+    &:hover {
+      cursor: default;
+    }
+  }
+}
