@@ -7,54 +7,18 @@ const currentUser = {
   name: "Name LastName",
   isSeller: true,
 }
+// const currentUser = null
 
 export function Navbar() {
-  let a = true
-
-  if (a) {
-    console.log("1")
-  } else {
-    console.log("2")
-  }
-
-  console.log("1")
   const [navbarIsActive, setNavbarIsActive] = useState(false)
   const [optionsIsActive, setOptionsIsActive] = useState(false)
 
-  const renderUser = () => {
-    if (currentUser) {
-      return !currentUser?.isSeller ? (
-        <></>
-      ) : (
-        <div className="user">
-          <img></img>
-          <span>{currentUser?.name}</span>
-          <div className="options">
-            {currentUser?.isSeller && (
-              <>
-                <span>Artworks</span>
-                <span>New artwork</span>
-              </>
-            )}
-            <span>Orders</span>
-            <span>Messages</span>
-            <span>Logout</span>
-          </div>
-        </div>
-      )
-    } else {
-      return (
-        <>
-          <Link to="/">Become a Seller</Link>
-          <Link to="/">Sign in</Link>
-          <button>JOIN</button>
-        </>
-      )
-    }
-  }
-
   const changeNavbarActive = () => {
     window.scrollY > 0 ? setNavbarIsActive(true) : setNavbarIsActive(false)
+  }
+
+  const changeOptionsIsActive = () => {
+    setOptionsIsActive(!optionsIsActive)
   }
 
   useEffect(() => {
@@ -75,7 +39,32 @@ export function Navbar() {
             <Link to="/">ArtMarket Business</Link>
             <Link to="/">Explore</Link>
             <Link to="/">English</Link>
-            {renderUser()}
+
+            {!currentUser ? (
+              <>
+                <Link to="/">Become a Seller</Link>
+                <Link to="/">Sign in</Link>
+                <button>JOIN</button>
+              </>
+            ) : (
+              <div className="user" onClick={changeOptionsIsActive}>
+                <img height={32} width={32} src="/img/user.svg" alt="user" />
+                <span>{currentUser?.name}</span>
+                {optionsIsActive && (
+                  <div className="options ">
+                    {currentUser?.isSeller && (
+                      <>
+                        <span>Artworks</span>
+                        <span>New artwork</span>
+                      </>
+                    )}
+                    <span>Orders</span>
+                    <span>Messages</span>
+                    <span>Logout</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
