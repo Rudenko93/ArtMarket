@@ -2,22 +2,70 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "./Navbar.scss"
 
-export function Navbar() {
-  const [isActive, setIsActive] = useState(true)
+const currentUser = {
+  id: 1,
+  name: "Name LastName",
+  isSeller: true,
+}
 
-  const changeActive = () => {
-    window.scrollY > 0 ? setIsActive(true) : setIsActive(false)
+export function Navbar() {
+  let a = true
+
+  if (a) {
+    console.log("1")
+  } else {
+    console.log("2")
+  }
+
+  console.log("1")
+  const [navbarIsActive, setNavbarIsActive] = useState(false)
+  const [optionsIsActive, setOptionsIsActive] = useState(false)
+
+  const renderUser = () => {
+    if (currentUser) {
+      return !currentUser?.isSeller ? (
+        <></>
+      ) : (
+        <div className="user">
+          <img></img>
+          <span>{currentUser?.name}</span>
+          <div className="options">
+            {currentUser?.isSeller && (
+              <>
+                <span>Artworks</span>
+                <span>New artwork</span>
+              </>
+            )}
+            <span>Orders</span>
+            <span>Messages</span>
+            <span>Logout</span>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <>
+          <Link to="/">Become a Seller</Link>
+          <Link to="/">Sign in</Link>
+          <button>JOIN</button>
+        </>
+      )
+    }
+  }
+
+  const changeNavbarActive = () => {
+    window.scrollY > 0 ? setNavbarIsActive(true) : setNavbarIsActive(false)
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", changeActive)
+    window.addEventListener("scroll", changeNavbarActive)
     return () => {
-      window.removeEventListener("scroll", changeActive)
+      window.removeEventListener("scroll", changeNavbarActive)
     }
   }, [])
 
   return (
-    <header className={isActive ? "active" : "inactive"}>
+    <header className={navbarIsActive ? "active" : "inactive"}>
       <div className="container">
         <div className="top">
           <div className="left">
@@ -27,13 +75,11 @@ export function Navbar() {
             <Link to="/">ArtMarket Business</Link>
             <Link to="/">Explore</Link>
             <Link to="/">English</Link>
-            <Link to="/">Become a Seller</Link>
-            <Link to="/">Sign in</Link>
-            <button>JOIN</button>
+            {renderUser()}
           </div>
         </div>
       </div>
-      {isActive && (
+      {navbarIsActive && (
         <>
           {" "}
           <hr />

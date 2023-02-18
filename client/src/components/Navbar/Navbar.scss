@@ -8,6 +8,7 @@ header {
   top: 0;
   z-index: 999;
   transition: 0.7s all ease;
+
   a {
     color: white;
   }
@@ -15,6 +16,7 @@ header {
   &.active {
     background-color: white;
     color: black;
+
     button {
       background-color: white !important;
       color: #1bb16b !important;
@@ -36,6 +38,7 @@ header {
 
   .container {
     width: 1400px;
+
     .top {
       width: 1400px;
       display: flex;
@@ -52,6 +55,7 @@ header {
         align-items: center;
         gap: 24px;
         font-weight: bold;
+
         button {
           font-weight: bold;
           color: white;
@@ -84,5 +88,16 @@ header {
     &:hover {
       cursor: default;
     }
+  }
+}
+
+.options {
+  display: none;
+  &:active {
+    display: block;
+    position: absolute;
+    background-color: white;
+    color: black;
+    top: 30px;
   }
 }
