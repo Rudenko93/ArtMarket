@@ -10,26 +10,26 @@ const currentUser = {
 // const currentUser = null
 
 export function Navbar() {
-  const [navbarIsActive, setNavbarIsActive] = useState(false)
-  const [optionsIsActive, setOptionsIsActive] = useState(false)
+  const [navbar, setNavbar] = useState(false)
+  const [options, setOptions] = useState(false)
 
-  const changeNavbarActive = () => {
-    window.scrollY > 0 ? setNavbarIsActive(true) : setNavbarIsActive(false)
+  const toggleNavbar = () => {
+    window.scrollY > 0 ? setNavbar(true) : setNavbar(false)
   }
 
-  const changeOptionsIsActive = () => {
-    setOptionsIsActive(!optionsIsActive)
+  const toggleOptions = () => {
+    setOptions(!options)
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", changeNavbarActive)
+    window.addEventListener("scroll", toggleNavbar)
     return () => {
-      window.removeEventListener("scroll", changeNavbarActive)
+      window.removeEventListener("scroll", toggleNavbar)
     }
   }, [])
 
   return (
-    <header className={navbarIsActive ? "active" : "inactive"}>
+    <header className={navbar ? "active" : "inactive"}>
       <div className="container">
         <div className="top">
           <div className="left">
@@ -47,10 +47,10 @@ export function Navbar() {
                 <button>JOIN</button>
               </>
             ) : (
-              <div className="user" onClick={changeOptionsIsActive}>
+              <div className="user" onClick={toggleOptions}>
                 <img height={32} width={32} src="/img/user.svg" alt="user" />
                 <span>{currentUser?.name}</span>
-                {optionsIsActive && (
+                {options && (
                   <div className="options ">
                     {currentUser?.isSeller && (
                       <>
@@ -68,7 +68,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
-      {navbarIsActive && (
+      {navbar && (
         <>
           {" "}
           <hr />
