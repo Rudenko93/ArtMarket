@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Link } from "react-router-dom"
+import useOutsideAlerter from "./hooks/useOutsideAlerter"
 import "./Navbar.scss"
 
 const currentUser = {
@@ -11,20 +12,16 @@ const currentUser = {
 
 export function Navbar() {
   const [navbar, setNavbar] = useState(false)
-  const [options, setOptions] = useState(false)
+  const { ref, isShow, setIsShow } = useOutsideAlerter(false)
 
-  const toggleNavbar = () => {
+  const changeNavbarActive = () => {
     window.scrollY > 0 ? setNavbar(true) : setNavbar(false)
   }
 
-  const toggleOptions = () => {
-    setOptions(!options)
-  }
-
   useEffect(() => {
-    window.addEventListener("scroll", toggleNavbar)
+    window.addEventListener("scroll", changeNavbarActive)
     return () => {
-      window.removeEventListener("scroll", toggleNavbar)
+      window.removeEventListener("scroll", changeNavbarActive)
     }
   }, [])
 
@@ -47,11 +44,16 @@ export function Navbar() {
                 <button>JOIN</button>
               </>
             ) : (
-              <div className="user" onClick={toggleOptions}>
-                <img height={32} width={32} src="/img/user.svg" alt="user" />
-                <span>{currentUser?.name}</span>
-                {options && (
-                  <div className="options ">
+              <>
+                <div
+                  className="user"
+                  onClick={() => setIsShow(!isShow)}
+                  ref={ref}>
+                  <img height={32} width={32} src="/img/user.svg" alt="user" />
+                  <span>{currentUser?.name}</span>
+                </div>
+                {isShow && (
+                  <div className="options">
                     {currentUser?.isSeller && (
                       <>
                         <span>Artworks</span>
@@ -63,7 +65,7 @@ export function Navbar() {
                     <span>Logout</span>
                   </div>
                 )}
-              </div>
+              </>
             )}
           </div>
         </div>
