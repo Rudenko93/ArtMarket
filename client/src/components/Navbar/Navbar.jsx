@@ -44,14 +44,13 @@ export function Navbar() {
                 <button>JOIN</button>
               </>
             ) : (
-              <>
-                <div
-                  className="user"
-                  onClick={() => setIsShow(!isShow)}
-                  ref={ref}>
-                  <img height={32} width={32} src="/img/user.svg" alt="user" />
-                  <span>{currentUser?.name}</span>
-                </div>
+              <div
+                className="user"
+                onClick={() => setIsShow(!isShow)}
+                ref={ref}>
+                <img height={32} width={32} src="/img/user.svg" alt="user" />
+                <span>{currentUser?.name}</span>
+
                 {isShow && (
                   <div className="options">
                     {currentUser?.isSeller && (
@@ -65,7 +64,7 @@ export function Navbar() {
                     <span>Logout</span>
                   </div>
                 )}
-              </>
+              </div>
             )}
           </div>
         </div>
