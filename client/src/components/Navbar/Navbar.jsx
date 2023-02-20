@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import useOutsideAlerter from "./hooks/useOutsideAlerter"
 import "./Navbar.scss"
 
@@ -13,6 +13,7 @@ const currentUser = {
 export function Navbar() {
   const [navbar, setNavbar] = useState(false)
   const { ref, isShow, setIsShow } = useOutsideAlerter(false)
+  const { pathname } = useLocation()
 
   const changeNavbarActive = () => {
     window.scrollY > 0 ? setNavbar(true) : setNavbar(false)
@@ -26,7 +27,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <header className={navbar ? "active" : "inactive"}>
+    <header className={navbar || pathname !== "/" ? "active" : "inactive"}>
       <div className="container">
         <div className="top">
           <div className="left">
@@ -55,13 +56,13 @@ export function Navbar() {
                   <div className="options">
                     {currentUser?.isSeller && (
                       <>
-                        <span>Artworks</span>
-                        <span>New artwork</span>
+                        <Link to="/artworks">Artworks</Link>
+                        <Link to="/add">New artwork</Link>
                       </>
                     )}
-                    <span>Orders</span>
-                    <span>Messages</span>
-                    <span>Logout</span>
+                    <Link to="/orders">Orders</Link>
+                    <Link to="/messages">Messages</Link>
+                    <Link to="/">Logout</Link>
                   </div>
                 )}
               </div>
@@ -69,7 +70,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
-      {navbar && (
+      {(navbar || pathname !== "/") && (
         <>
           {" "}
           <hr />

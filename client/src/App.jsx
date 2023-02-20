@@ -1,7 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Layout } from "./layouts"
 import { Home } from "./pages/Home"
-import { Artworks } from "./pages"
+import { Add } from "./pages/Add"
+import { Artwork } from "./pages/Artwork"
+import { Artworks } from "./pages/Artworks"
+import { Message } from "./pages/Message"
+import { Messages } from "./pages/Messages"
+import { Orders } from "./pages/Orders"
 
 const router = createBrowserRouter([
   {
@@ -9,12 +14,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/artworks", element: <Home /> },
-      { path: "/artworks/:id", element: <Home /> },
-      { path: "/messages", element: <Home /> },
-      { path: "/messages/:id", element: <Home /> },
-      { path: "/orders", element: <Home /> },
-      { path: "/", element: <Home /> },
+      { path: "/artworks", element: <Artworks /> },
+      { path: "/artworks/:id", element: <Artwork /> },
+      { path: "/messages", element: <Messages /> },
+      { path: "/messages/:id", element: <Message /> },
+      { path: "/orders", element: <Orders /> },
+      { path: "/add", element: <Add /> },
     ],
   },
 ])
