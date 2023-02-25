@@ -1,6 +1,8 @@
 import { Featured } from "../../components/Featured"
 import { TrustedBy } from "../../components/TrustedBy"
-import { Slider } from "../../components/Slider/"
+import { Slide } from "../../components/Slide/"
+import { CatCard } from "../../components/CatCard"
+import { cards } from "../../../../api/data"
 import "./Home.scss"
 
 export function Home() {
@@ -8,7 +10,11 @@ export function Home() {
     <div className="">
       <Featured />
       <TrustedBy />
-      <Slider />
+      <Slide slidesToShow={5} arrowsScroll={2}>
+        {cards.map((card) => (
+          <CatCard card={card} id={card.id} />
+        ))}
+      </Slide>
     </div>
   )
 }
