@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Layout } from "./layouts"
 import { Home } from "./pages/Home"
 import { Add } from "./pages/Add"
-import { Artwork } from "./pages/Artwork"
+import { Category } from "./pages/Category"
 import { Artworks } from "./pages/Artworks"
 import { Message } from "./pages/Message"
 import { Messages } from "./pages/Messages"
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/artworks", element: <Artworks /> },
-      { path: "/artworks/:id", element: <Artwork /> },
+      { path: "/categories/:id", element: <Category /> },
       { path: "/messages", element: <Messages /> },
       { path: "/messages/:id", element: <Message /> },
       { path: "/orders", element: <Orders /> },

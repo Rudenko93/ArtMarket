@@ -1,8 +1,8 @@
-import { Featured } from "../../components/Featured"
-import { TrustedBy } from "../../components/TrustedBy"
-import { Slide } from "../../components/Slide/"
-import { CatCard } from "../../components/CatCard"
-import { ProjectCard } from "../../components/ProjectCard"
+import { Featured } from "./components/Featured"
+import { TrustedBy } from "./components/TrustedBy"
+import { Slide } from "./components/Slide/"
+import { CatCard } from "./components/CatCard"
+import { ProjectCard } from "./components/ProjectCard"
 import { cards, projects } from "../../../../api/data"
 import "./Home.scss"
 
