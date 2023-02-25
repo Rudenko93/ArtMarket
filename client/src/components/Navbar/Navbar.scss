@@ -7,7 +7,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 999;
-  transition: 0.7s all ease;
+  transition: all 0.7s ease;
 
   a {
     color: white;
@@ -97,7 +97,7 @@ header {
           border-radius: 5px;
           border: 1px solid white;
           cursor: pointer;
-          transition: all 0.1s ease-in-out;
+          transition: all 0.7s ease;
           background-color: transparent;
 
           &:hover {

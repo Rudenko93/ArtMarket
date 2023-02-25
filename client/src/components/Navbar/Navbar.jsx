@@ -5,7 +5,7 @@ import "./Navbar.scss"
 
 const currentUser = {
   id: 1,
-  name: "Name LastName",
+  name: "John John",
   isSeller: true,
 }
 // const currentUser = null
