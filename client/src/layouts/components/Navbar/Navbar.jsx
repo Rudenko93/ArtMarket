@@ -56,8 +56,8 @@ export function Navbar() {
                   <div className="options">
                     {currentUser?.isSeller && (
                       <>
-                        <Link to="/artworks">Artworks</Link>
-                        <Link to="/add">New artwork</Link>
+                        <Link to="/list">Products</Link>
+                        <Link to="/add">New Product</Link>
                       </>
                     )}
                     <Link to="/orders">Orders</Link>
