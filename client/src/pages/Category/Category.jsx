@@ -6,6 +6,7 @@ import "./Category.scss"
 export function Category() {
   const [sort, setSort] = useState("sales")
   const [open, setOpen] = useState(false)
+  const [inpVal, setInpVal] = useState({ min: "", max: "" })
   // const minRef = useRef()
   // const maxRef = useRef()
 
@@ -20,9 +21,11 @@ export function Category() {
   // }
 
   return (
-    <div className="gigs">
+    <div className="category">
       <div className="container">
-        <span className="breadcrumbs">MyArt Graphics & Design </span>
+        <span className="breadcrumbs">
+          MyArt {">"} Graphics & Design {">"}{" "}
+        </span>
         <h1>AI Artists</h1>
         <p>
           Explore the boundaries of art and technology with MyArt AI artists
@@ -31,16 +34,18 @@ export function Category() {
           <div className="left">
             <span>Budget</span>
             <input
-              // ref={minRef}
-              type="number"
+              type="text"
               placeholder="min"
+              value={inpVal.min}
+              onChange={(e) => setInpVal({ ...inpVal, min: e.target.value })}
             />
             <input
-              // ref={maxRef}
-              type="number"
+              type="text"
               placeholder="max"
+              value={inpVal.max}
+              onChange={(e) => setInpVal({ ...inpVal, max: e.target.value })}
             />
-            <button onClick={""}>Apply</button>
+            <button onClick={() => console.log(inpVal)}>Apply</button>
           </div>
           <div className="right">
             <span className="sortBy">Sort by</span>
@@ -50,12 +55,12 @@ export function Category() {
             <img src="/img/down.png" alt="" onClick={() => setOpen(!open)} />
             {open && (
               <div className="rightMenu">
-                {/* {sort === "sales" ? (
+                {sort === "sales" ? (
                   <span onClick={() => reSort("createdAt")}>Newest</span>
                 ) : (
                   <span onClick={() => reSort("sales")}>Best Selling</span>
                 )}
-                <span onClick={() => reSort("sales")}>Popular</span> */}
+                <span onClick={() => reSort("sales")}>Popular</span>
               </div>
             )}
           </div>

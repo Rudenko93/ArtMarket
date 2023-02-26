@@ -3,7 +3,7 @@ import "./ProductCard.scss"
 
 export function ProductCard({ product }) {
   return (
-    <Link to="" className="link">
+    <Link to="/products/123" className="link">
       <div className="gigCard">
         <img src={product.img} alt="" />
         <div className="info">
